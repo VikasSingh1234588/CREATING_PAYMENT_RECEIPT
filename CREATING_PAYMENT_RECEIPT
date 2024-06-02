@@ -1,0 +1,24 @@
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+
+def create_payment_receipt(filename="payment_receipt.pdf"):
+    # Create a PDF canvas
+    c = canvas.Canvas(filename, pagesize=letter)
+
+    # Set font and font size
+    c.setFont("Helvetica", 12)
+
+    # Add receipt details
+    c.drawString(100, 750, "Payment Receipt")
+    c.drawString(100, 730, "Date: 2023-05-10")
+    c.drawString(100, 710, "Customer Name: John Doe")
+    c.drawString(100, 690, "Amount Paid: $100.00")
+    c.drawString(100, 670, "Payment Method: Credit Card")
+
+    # Save the PDF
+    c.save()
+
+    print(f"Payment receipt saved as {filename}")
+
+if __name__ == "__main__":
+    create_payment_receipt()
